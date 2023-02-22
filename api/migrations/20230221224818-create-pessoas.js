@@ -3,7 +3,7 @@
 //npx sequelize-cli db:migrate
 //este comando defaz a migration, em caso de uma mudança que tenha dado erro
 //npx sequelize-cli db:migrate:undo  //só desfaz a ultima migration
-'use strict';
+'use strict';//obs: as migrations ou tabelas sao criadas na ordem que foram criadas
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
