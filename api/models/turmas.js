@@ -14,8 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'turma_id'
      })
 
-     Turmas.belongsTo(models.Pessoas) // fazendo o outro lado da relação
-     Turmas.belongsTo(models.Niveis) // fazendo o outro lado da relação
+     Turmas.belongsTo(models.Pessoas, {
+      foreignKey: 'docente_id'
+     }) // fazendo o outro lado da relação
+     Turmas.belongsTo(models.Niveis,{
+      foreignKey: 'nivel_id' //fazendo a relação com os dois lados
+     }) // fazendo o outro lado da relação
     }
   }
   Turmas.init({
