@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+     Turmas.hasMany(models.Matriculas,{
+      foreignKey: 'turma_id'
+     })
+
+     Turmas.belongsTo(models.Pessoas) // fazendo o outro lado da relação
+     Turmas.belongsTo(models.Niveis) // fazendo o outro lado da relação
     }
   }
   Turmas.init({
