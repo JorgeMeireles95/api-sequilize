@@ -24,12 +24,21 @@ module.exports = (sequelize, DataTypes) => {
   Pessoas.init({
     nome: DataTypes.STRING,
     ativo: DataTypes.BOOLEAN,
-    email: DataTypes.STRING,
-    role: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+             //isEmail:true //valida se o email é valido
+        isEmail: {
+          args: true,//outra forma de validae e manda um mensagem, caso tenha um erro
+          msg: 'e-mail inválido'
+        }
+      }
+    },
+      role: DataTypes.STRING
   }, {
     sequelize,
     paranoid:true, // soft delete apaga do sistema mas mantem no banco
-    defaultScope:{
+    defaultScope:{ //para trazer por padrao os registros que nao foram deletados que no campo está como ativo: true
       where: {ativo: true}
     }, //para nao trazer os registros que foram deletados
    scopes:{
