@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     paranoid:true, // soft delete apaga do sistema mas mantem no banco
+    defaultScope:{where: {ativo: true}}, //para nao trazer os registros que foram deletados
     modelName: 'Pessoas',
   });
   return Pessoas;
