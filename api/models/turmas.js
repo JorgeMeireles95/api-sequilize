@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     data_inicio: DataTypes.DATEONLY
   }, {
     sequelize,
+    paranoid:true, // soft delete apaga do sistema mas mantem no banco
     modelName: 'Turmas',
   });
   return Turmas;

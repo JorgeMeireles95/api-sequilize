@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     descr_nivel: DataTypes.STRING
   }, {
     sequelize,
+     paranoid:true, // soft delete apaga do sistema mas mantem no banco
     modelName: 'Niveis',
   });
   return Niveis;

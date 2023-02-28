@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     role: DataTypes.STRING
   }, {
     sequelize,
+    paranoid:true, // soft delete apaga do sistema mas mantem no banco
     modelName: 'Pessoas',
   });
   return Pessoas;

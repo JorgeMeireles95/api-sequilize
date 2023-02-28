@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Matriculas extends Model {
+
+    
+    
+     
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -22,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING
   }, {
     sequelize,
+     paranoid:true, // soft delete apaga do sistema mas mantem no banco criando um campo deletedAt
     modelName: 'Matriculas',
   });
   return Matriculas;
