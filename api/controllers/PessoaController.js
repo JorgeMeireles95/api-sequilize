@@ -109,16 +109,24 @@ const Sequelize = require('sequelize');
       const {estudanteId} = req.params
 
       try {
-       await database.Pessoas
-        .update({ative: false}, 
-        {where: {id: Number(estudanteId)}})
-        
-       await database.Matriculas
-       .update({ativo: false},
-        {where: {estudante_id: Number(estudanteId)}})
-        
-        return res.status(200).json({message: ` cancelada com sucesso`})
-   
+        //transação
+        database.sequelize.transaction(async transacao => {
+
+          await database.Pessoas
+          .update({ative: false}, 
+          {where: {id: Number(estudanteId)}},
+          {transaction: transacao}) //caso não execute a transação, não executa a proxima linha
+          
+         await database.Matriculas
+         .update({ativo: false},
+          {where: {estudante_id: Number(estudanteId)}},
+          {transaction: transacao})
+  
+          return res.status(200).json({message: ` cancelada com sucesso`})
+     
+
+        })
+      
       } catch (error) {
         return res.status(500).json(error.message)
       }
