@@ -22,6 +22,8 @@ const Sequelize = require('sequelize');
       }
     }
 
+    
+
 
 
     static async pegaUmaPessoa(req, res) {
@@ -97,6 +99,35 @@ const Sequelize = require('sequelize');
         return res.status(500).json(error.message)
       }
     }
+
+
+
+
+
+
+   static async cancelaPessoa(req, res) {
+      const {estudanteId} = req.params
+
+      try {
+       await database.Pessoas
+        .update({ative: false}, 
+        {where: {id: Number(estudanteId)}})
+        
+       await database.Matriculas
+       .update({ativo: false},
+        {where: {estudante_id: Number(estudanteId)}})
+        
+        return res.status(200).json({message: ` cancelada com sucesso`})
+   
+      } catch (error) {
+        return res.status(500).json(error.message)
+      }
+    }
+
+
+
+
+
 
     
     static async criarMatricula(req, res) {
