@@ -52,6 +52,24 @@ const database = require('../models');
         return res.status(500).json(error.message)
       }
     }
+
+    static async pegaMatriculasPorTurma(req, res) {
+      const { turmaId } = req.params
+      try {
+        const todasAsMatriculas = await database.Matriculas.findAndCountAll({
+          where: {
+            turma_id: Number(turmaId),
+            status: 'confirmado'
+          }
+        })
+        return res.status(200).json(todasAsMatriculas)
+         
+      } catch (error) {
+        return res.status(500).json(error.message)
+      }
+    }
+
+    
     static async criarMatricula(req, res) {
       const { estudanteId } = req.params
       const novaMatricula = { ...req.body, estudante_id: Number(estudanteId) }
