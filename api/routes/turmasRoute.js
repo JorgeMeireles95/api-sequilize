@@ -4,9 +4,9 @@ const TurmaController = require('../controllers/TurmaController')
 
 
 
-//router.get('/turmas', TurmaController.pegaTodasAsTurmas)
+router.get('/turmas', TurmaController.pegaTodasAsTurmas)
 router.get('/turmas/:id', TurmaController.pegaUmaTurma)
-router.get('/turma/data', TurmaController.pegaTodasAsTurmasPOrData)
+router.get('/turma/data', TurmaController.pegaTodasAsTurmasPorData)
 //colocar a querty string 
 //http://localhost:3000/turmas?data_incial=2023-02-221&data_final=2023-01-06
 router.post('/turmas', TurmaController.criaTurma)
