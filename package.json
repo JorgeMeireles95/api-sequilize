@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon index.js http://localhost:3000",
+    "start": "nodemon index.js http://localhost:3000",
+    "swagger-autogen": "node swagger.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jorge Meireles",
@@ -15,7 +16,9 @@
     "mysql2": "^3.1.2",
     "path": "^0.12.7",
     "sequelize": "^6.28.1",
-    "sequelize-cli": "^6.6.0"
+    "sequelize-cli": "^6.6.0",
+    "swagger-autogen": "^2.23.1",
+    "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
